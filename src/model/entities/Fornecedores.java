@@ -2,38 +2,41 @@ package model.entities;
 
 import java.io.Serializable;
 
-public class Consumidores implements Serializable {
+public class Fornecedores implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String Nome;
 	private int RG;
 	private String CPF;
+	private String CNPJ;
 	private String Cidade;
 	private String Estado;
 	private String Rua;
 	private int Numero;
 	private String Complemento;
 	private int CEP;
-	private String Cardcred;
 
-	public Consumidores() {
+	private Consumidores consumidores;
+
+	public Fornecedores() {
 	}
 
-	public Consumidores(int id, String nome, int rG, String cPF, String cidade, String estado, String rua, int numero,
-			String complemento, int cEP, String cardcred) {
+	public Fornecedores(int id, String nome, int rG, String cPF, String cNPJ, String cidade, String estado, String rua,
+			int numero, String complemento, int cEP, Consumidores consumidores) {
 		super();
 		this.id = id;
 		Nome = nome;
 		RG = rG;
 		CPF = cPF;
+		CNPJ = cNPJ;
 		Cidade = cidade;
 		Estado = estado;
 		Rua = rua;
 		Numero = numero;
 		Complemento = complemento;
 		CEP = cEP;
-		Cardcred = cardcred;
+		this.consumidores = consumidores;
 	}
 
 	public int getId() {
@@ -66,6 +69,14 @@ public class Consumidores implements Serializable {
 
 	public void setCPF(String cPF) {
 		CPF = cPF;
+	}
+
+	public String getCNPJ() {
+		return CNPJ;
+	}
+
+	public void setCNPJ(String cNPJ) {
+		CNPJ = cNPJ;
 	}
 
 	public String getCidade() {
@@ -116,12 +127,12 @@ public class Consumidores implements Serializable {
 		CEP = cEP;
 	}
 
-	public String getCardcred() {
-		return Cardcred;
+	public Consumidores getConsumidores() {
+		return consumidores;
 	}
 
-	public void setCardcred(String cardcred) {
-		Cardcred = cardcred;
+	public void setConsumidores(Consumidores consumidores) {
+		this.consumidores = consumidores;
 	}
 
 	@Override
@@ -140,7 +151,7 @@ public class Consumidores implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Consumidores other = (Consumidores) obj;
+		Fornecedores other = (Fornecedores) obj;
 		if (id != other.id)
 			return false;
 		return true;
@@ -148,10 +159,9 @@ public class Consumidores implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Consumidores [id=" + id + ", Nome=" + Nome + ", RG=" + RG + ", CPF=" + CPF + ", Cidade=" + Cidade
-				+ ", Estado=" + Estado + ", Rua=" + Rua + ", Numero=" + Numero + ", Complemento=" + Complemento
-				+ ", CEP=" + CEP + ", Cardcred=" + Cardcred + "]";
+		return "Fornecedores [id=" + id + ", Nome=" + Nome + ", RG=" + RG + ", CPF=" + CPF + ", CNPJ=" + CNPJ
+				+ ", Cidade=" + Cidade + ", Estado=" + Estado + ", Rua=" + Rua + ", Numero=" + Numero + ", Complemento="
+				+ Complemento + ", CEP=" + CEP + ", consumidores=" + consumidores + "]";
 	}
 
-	
 }
