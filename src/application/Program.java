@@ -18,6 +18,7 @@ public class Program {
 		
 		ConsumidoresDao consumidoresDao = DaoFactory.createConsumidoresDao();
 		
+		System.out.println(" === TESTE N° 1 consumidores finById ===");
 		Consumidores consumidores = consumidoresDao.findById(1);
 		
 		System.out.println(consumidores);

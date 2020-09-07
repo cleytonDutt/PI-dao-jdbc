@@ -51,21 +51,8 @@ public ConsumidoresDaoJDBC(Connection conn) {
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
-				Fornecedores fs = new Fornecedores();
-				fs.setId(rs.getInt("Id"));
-				fs.setNome(rs.getString("Nome"));
-				Consumidores obj = new Consumidores();
-				obj.setId(rs.getInt("Id"));
-				obj.setNome(rs.getString("nome"));
-				obj.setRG(rs.getInt("RG"));
-				obj.setCPF(rs.getString("CPF"));
-				obj.setCidade(rs.getString("Cidade"));
-				obj.setEstado(rs.getString("Estado"));
-				obj.setRua(rs.getString("Rua"));
-				obj.setNumero(rs.getInt("Numero"));
-				obj.setComplemento(rs.getString("Complemento"));
-				obj.setCEP(rs.getInt("CEP"));
-				obj.setCardcred(rs.getString("CardCred"));
+				Fornecedores fs = instantiateFornecedores(rs);
+				Consumidores obj = instantiateConsumidores(rs, fs);
 				return obj;
 			}
 			return null;
@@ -77,6 +64,29 @@ public ConsumidoresDaoJDBC(Connection conn) {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
+	}
+
+	private Consumidores instantiateConsumidores(ResultSet rs, Fornecedores fs) throws SQLException {
+		Consumidores obj = new Consumidores();
+		obj.setId(rs.getInt("Id"));
+		obj.setNome(rs.getString("nome"));
+		obj.setRG(rs.getInt("RG"));
+		obj.setCPF(rs.getString("CPF"));
+		obj.setCidade(rs.getString("Cidade"));
+		obj.setEstado(rs.getString("Estado"));
+		obj.setRua(rs.getString("Rua"));
+		obj.setNumero(rs.getInt("Numero"));
+		obj.setComplemento(rs.getString("Complemento"));
+		obj.setCEP(rs.getInt("CEP"));
+		obj.setCardcred(rs.getString("CardCred"));
+		return obj;
+	}
+
+	private Fornecedores instantiateFornecedores(ResultSet rs) throws SQLException {
+		Fornecedores fs = new Fornecedores();
+		fs.setId(rs.getInt("Id"));
+		fs.setNome(rs.getString("Nome"));
+		return fs;
 	}
 
 	@Override
