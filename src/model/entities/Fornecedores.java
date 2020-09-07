@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Fornecedores implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int id;
+	private int Id;
 	private String Nome;
 	private int RG;
 	private String CPF;
@@ -25,7 +25,7 @@ public class Fornecedores implements Serializable {
 	public Fornecedores(int id, String nome, int rG, String cPF, String cNPJ, String cidade, String estado, String rua,
 			int numero, String complemento, int cEP, Consumidores consumidores) {
 		super();
-		this.id = id;
+		Id = id;
 		Nome = nome;
 		RG = rG;
 		CPF = cPF;
@@ -40,11 +40,11 @@ public class Fornecedores implements Serializable {
 	}
 
 	public int getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public String getNome() {
@@ -139,7 +139,7 @@ public class Fornecedores implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + Id;
 		return result;
 	}
 
@@ -152,14 +152,14 @@ public class Fornecedores implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Fornecedores other = (Fornecedores) obj;
-		if (id != other.id)
+		if (Id != other.Id)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Fornecedores [id=" + id + ", Nome=" + Nome + ", RG=" + RG + ", CPF=" + CPF + ", CNPJ=" + CNPJ
+		return "Fornecedores [Id=" + Id + ", Nome=" + Nome + ", RG=" + RG + ", CPF=" + CPF + ", CNPJ=" + CNPJ
 				+ ", Cidade=" + Cidade + ", Estado=" + Estado + ", Rua=" + Rua + ", Numero=" + Numero + ", Complemento="
 				+ Complemento + ", CEP=" + CEP + ", consumidores=" + consumidores + "]";
 	}
