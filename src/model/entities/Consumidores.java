@@ -16,6 +16,8 @@ public class Consumidores implements Serializable {
 	private String Complemento;
 	private int CEP;
 	private String Cardcred;
+	
+	private Fornecedores fornecedores;
 
 	public Consumidores() {
 	}
